@@ -1,0 +1,75 @@
+# ===============================
+# Laravel AI Ignore
+# ===============================
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Application caches & logs
+/storage/logs/
+/storage/framework/
+/bootstrap/cache/
+
+# Compiled & build outputs
+/public/hot
+/public/storage
+/public/build/
+/public/mix-manifest.json
+
+# IDE / Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing / coverage
+/coverage/
+/.phpunit.result.cache
+
+# Temporary & debug files
+*.log
+*.tmp
+*.temp
+
+# Database
+*.sqlite
+/database/*.sqlite
+
+# Package manager artifacts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# AI-unfriendly / large files
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.mp4
+*.mov
+*.avi
+
+# Optional: ignore migrations & seed data if sensitive
+# /database/migrations/
+# /database/seeders/
+
+# Optional: ignore config if it contains secrets
+# /config/*.php

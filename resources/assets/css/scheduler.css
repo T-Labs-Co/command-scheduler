@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../packages/dbcsoft-labs/command-scheduler/**/*.blade.php';
+@source '../../packages/dbcsoft-labs/command-scheduler/**/*.js';
+@source '../../vendor/dbcsoft-labs/command-scheduler/**/*.blade.php';
+@source '../../vendor/dbcsoft-labs/command-scheduler/**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Custom variable ...*/
+    /* Color palette https://daisyui.com/docs/utilities/#component-specific-css-variables */
+    /* https://github.com/saadeghi/daisyui/blob/master/packages/daisyui/src/base/rootcolor.css */
+    --color-cyan: #3fecdb;
+    --color-cyan-content: #112A46;
+    --color-ceil: #FF85FF;
+    --color-ceil-content: #330033;
+    --color-floor: #3fecdb;
+    --color-floor-content: #112A46;
+    --color-unchanged: #FFBF00;
+    --color-unchanged-content: #2A2002;
+    /*#00D391*/
+    --color-up: #00D391;
+    --color-up-content: #130F03;
+    --color-down: #FF637E;
+    --color-down-content: #ffb3c1;
+    --color-none: #d2cdcd;
+    --color-none-content: #414141;
+}
+
+
+
+/**
+    The lines above are intact.
+    The lines below were added by maryUI installer.
+*/
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: light --default;
+}
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
+
+/* Theme toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+* Paginator - Traditional style
+* Because Laravel defaults does not match well the design of daisyUI.
+*/
+
+.mary-table-pagination span[aria-current="page"] > span {
+    @apply bg-primary text-base-100
+}
+
+.mary-table-pagination button {
+    @apply cursor-pointer
+}
+
+.mary-table-pagination {
+    nav[role="navigation"] p {
+        @apply text-base-content/50
+    }
+
+    button, span {
+        @apply text-sm border-none
+    }
+
+    button {
+        @apply cursor-pointer bg-base-200 text-base-content hover:bg-base-300
+    }
+
+    span[aria-current="page"] > span {
+        @apply bg-base-content/5 text-base-content
+    }
+
+    button, span[aria-current="page"] > span, span[aria-disabled="true"] span {
+        @apply py-1 px-2 bg-base-content/5 text-base-content
+    }
+
+    span[aria-current="page"] > span {
+        @apply text-base-100 bg-primary
+    }
+}
+
+.table-sm .mary-table-pagination {
+    button, span[aria-current="page"] > span, span[aria-disabled="true"] span {
+        @apply py-2 px-4 bg-base-content/5 text-base-content
+    }
+
+    span[aria-current="page"] > span {
+        @apply bg-primary text-base-content
+    }
+}
+
+.toggle.toggle-primary {
+    @apply bg-primary/50 text-base-content/50 input-primary
+}
+
+/* Custom Toggle Color */
+.toggle.toggle-primary:checked, .toggle.toggle-primary[aria-checked=true], .toggle.toggle-primary:has(>input:checked) {
+    @apply bg-primary text-base-content input-primary
+    /*--input-color: var(--color-base-content);*/
+}
+
+/* Custom classes for custom colors */
+/* text-{color}, bg-{color} */
+/* text-{color}-content, bg-{color}-content */
+/* https://daisyui.com/docs/utilities/#component-specific-css-variables */
+
+.text-md {
+    font-size: var(--text-base) !important;
+    line-height: var(--text-base--line-height) !important;
+}
+
+.text-cyan {
+    color: var(--color-cyan) !important;
+}
+.bg-cyan {
+    background-color: var(--color-cyan) !important;
+    color: var(--color-cyan-content) !important;
+}
+.text-floor {
+    color: var(--color-floor) !important;
+}
+.bg-floor {
+    background-color: var(--color-floor) !important;
+    color: var(--color-floor-content) !important;
+}
+.text-ceil {
+    color: var(--color-ceil) !important;
+}
+.bg-ceil {
+    background-color: var(--color-ceil) !important;
+    color: var(--color-ceil-content) !important;
+}
+.text-unchanged {
+    color: var(--color-unchanged) !important;
+}
+.bg-unchanged {
+    background-color: var(--color-unchanged) !important;
+    color: var(--color-unchanged-content) !important;
+}
+.text-up {
+    color: var(--color-up) !important;
+}
+.bg-up {
+    background-color: var(--color-up) !important;
+    color: var(--color-up-content) !important;
+}
+.text-down {
+    color: var(--color-down) !important;
+}
+.bg-down {
+    background-color: var(--color-down) !important;
+    color: var(--color-down-content) !important;
+}
+.text-none {
+    color: var(--color-none) !important;
+}
+.bg-none {
+    background-color: var(--color-none) !important;
+    color: var(--color-none-content) !important;
+}
+
+/* add badge colors for custom colors */
+.badge-cyan {
+    --badge-color: var(--color-cyan);
+    --badge-fg: var(--color-cyan-content);
+}
+.badge-floor {
+    --badge-color: var(--color-floor);
+    --badge-fg: var(--color-floor-content);
+}
+.badge-ceil {
+    --badge-color: var(--color-ceil);
+    --badge-fg: var(--color-ceil-content);
+}
+.badge-unchanged {
+    --badge-color: var(--color-unchanged);
+    --badge-fg: var(--color-unchanged-content);
+}
+.badge-up {
+    --badge-color: var(--color-up);
+    --badge-fg: var(--color-up-content);
+}
+.badge-down {
+    --badge-color: var(--color-down);
+    --badge-fg: var(--color-down-content);
+}
+.badge-none {
+    --badge-color: var(--color-none);
+    --badge-fg: var(--color-none-content);
+}
+
+.badge-bold {
+    font-weight: bold;
+}
+
+/* Modal size
+    Add classes like max-w-sm, max-w-md, max-w-lg, max-w-xl, or max-w-2xl (common in DaisyUI/Tailwind) directly to the <x-modal> tag or the modal-box slot.
+Example: <x-modal box-class="max-w-lg"> for a large modal.
+
+*/
+/* Default modal box */
+/* .modal-box {
+    max-width: 32rem;
+    max-height: 100vh;
+} */
+
+/* Modal size variants */
+.modal-box.size-xs {
+    max-width: 20rem; /* 320px */
+}
+
+.modal-box.size-sm {
+    max-width: 24rem; /* 384px */
+}
+
+.modal-box.size-md {
+    max-width: 28rem; /* 448px */
+}
+
+.modal-box.size-lg {
+    max-width: 32rem; /* 512px - default */
+}
+
+.modal-box.size-xl {
+    max-width: 36rem; /* 576px */
+}
+
+.modal-box.size-2xl {
+    max-width: 42rem; /* 672px */
+}
+
+.modal-box.size-3xl {
+    max-width: 48rem; /* 768px */
+}
+
+.modal-box.size-4xl {
+    max-width: 56rem; /* 896px */
+}
+
+.modal-box.size-5xl {
+    max-width: 64rem; /* 1024px */
+}
+
+.modal-box.size-6xl {
+    max-width: 72rem; /* 1152px */
+}
+
+.modal-box.size-7xl {
+    max-width: 80rem; /* 1280px */
+}
+
+.modal-box.size-full {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+}

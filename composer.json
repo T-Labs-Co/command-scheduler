@@ -1,0 +1,81 @@
+{
+    "name": "t-labs-co/command-scheduler",
+    "description": "Code-first command scheduling framework for Laravel — discover schedulable commands via PHP 8 attributes or interfaces, persist schedule definitions to database, enforce run windows, and control tasks via Livewire dashboard or CLI.",
+    "keywords": [
+        "t-labs-co",
+        "ty-huynh",
+        "laravel",
+        "command-scheduler",
+        "scheduler",
+        "cron",
+        "task-scheduling",
+        "livewire",
+        "maryui"
+    ],
+    "license": "MIT",
+    "version": "1.0.0",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ty Huynh",
+            "email": "hongty.huynh@gmail.com",
+            "homepage": "https://tyhuynh.id.vn",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "dragonmantank/cron-expression": "^3.6",
+        "illuminate/console": "^12|^13",
+        "illuminate/database": "^12|^13",
+        "illuminate/events": "^12|^13",
+        "illuminate/filesystem": "^12|^13",
+        "illuminate/routing": "^12|^13",
+        "illuminate/support": "^12|^13",
+        "livewire/livewire": "^3|^4",
+        "lorisleiva/cron-translator": "^0.5",
+        "robsontenorio/mary": "^2.1"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3",
+        "laravel/pint": "^1",
+        "orchestra/testbench": "^10|^11",
+        "pestphp/pest": "^4|^5",
+        "pestphp/pest-plugin-laravel": "^4|^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TLabsCo\\CommandScheduler\\": "src/"
+        },
+        "files": [
+            "src/Support/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TLabsCo\\CommandScheduler\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest --parallel",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=1G",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TLabsCo\\CommandScheduler\\Providers\\CommandSchedulerServiceProvider",
+                "TLabsCo\\CommandScheduler\\Providers\\RouteServiceProvider",
+                "TLabsCo\\CommandScheduler\\Providers\\EventServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
