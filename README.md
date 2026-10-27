@@ -21,10 +21,29 @@ Code-first command scheduling framework for Laravel — discover schedulable com
 
 ---
 
+## Why not routes/console.php?
+
+Laravel's built-in scheduler is solid, and for a handful of static tasks it's all you need. This package is for when schedules become something you **manage**, not just something you **declare**.
+
+| | routes/console.php (native) | Command Scheduler |
+|---|---|---|
+| Define recurring tasks | ✅ Schedule::command() | ✅ #[Scheduled] attribute |
+| Where the schedule lives | Central file, separate from the command | On the command class itself |
+| Frequency, windows, timezone, hooks | ✅ Fluent methods | ✅ Cron plus 14 built-in run windows |
+| Overlap and single-server locks | ✅ withoutOverlapping(), onOneServer() | Native locks still apply |
+| Enable or disable at runtime | Needs a code change and deploy, or custom flags | ✅ Database toggle, no deploy |
+| Run history | Not stored by default | ✅ cs_scheduled_command_runs |
+| Web UI | None built in | ✅ Optional Livewire dashboard |
+| Extra dependencies | None | Package, plus Livewire and MaryUI for the dashboard |
+
+Choose **native** if your tasks are few and rarely change. Choose **this package** if you want schedules defined with the command, controlled at runtime, and tracked with run history.
+
+---
+
 ## Documentation
 
-- **[Usage Guide & Examples](USAGE.md)** — All patterns for defining scheduled commands, run windows, composable attributes, events, failure notifications, and migration from native Laravel scheduler.
-- **[Dashboard Setup Guide](DASHBOARD-SETUP.md)** — Step-by-step guide for installing, configuring, and customizing the Livewire/MaryUI dashboard, including Vite asset building and layout options.
+- **[Usage Guide & Examples](docs/USAGE.md)** — All patterns for defining scheduled commands, run windows, composable attributes, events, failure notifications, and migration from native Laravel scheduler.
+- **[Dashboard Setup Guide](docs/DASHBOARD-SETUP.md)** — Step-by-step guide for installing, configuring, and customizing the Livewire/MaryUI dashboard, including Vite asset building and layout options.
 
 ---
 
@@ -132,7 +151,7 @@ class GenerateDailyReportCommand extends Command implements SchedulableCommand
 
 ## Run Windows
 
-Run windows restrict execution to specific time periods regardless of cron schedule. For a complete reference of all 14 run window types, see the [Usage Guide](USAGE.md#5-run-windows-reference).
+Run windows restrict execution to specific time periods regardless of cron schedule. For a complete reference of all 14 run window types, see the [Usage Guide](docs/USAGE.md#5-run-windows-reference).
 
 | Window | Description |
 |---|---|
@@ -180,7 +199,7 @@ php artisan scheduler:prune-logs --days=30
 
 ## Dashboard Setup
 
-For a complete step-by-step dashboard setup guide — including dependency installation, Vite asset building, layout customization, and troubleshooting — see the **[Dashboard Setup Guide](DASHBOARD-SETUP.md)**.
+For a complete step-by-step dashboard setup guide — including dependency installation, Vite asset building, layout customization, and troubleshooting — see the **[Dashboard Setup Guide](docs/DASHBOARD-SETUP.md)**.
 
 The dashboard is accessible by default at `/admin/scheduler` (and `/scheduler`).
 
